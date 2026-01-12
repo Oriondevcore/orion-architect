@@ -1,0 +1,23 @@
+{
+  "name": "Orion Architect",
+  "short_name": "Architect",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "The AI Board of Directors and Code Builder for Orion Dev Core.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3094/3094894.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3094/3094894.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
