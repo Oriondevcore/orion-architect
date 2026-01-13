@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Orion Architect</title>
     <link rel="manifest" href="manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,28 +11,31 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { background: #0f172a; color: white; margin: 0; font-family: sans-serif; }
-        #loader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0f172a; z-index: 999; transition: 0.5s; }
+        body { background: #0f172a; color: white; margin: 0; font-family: sans-serif; overflow: hidden; }
+        #loader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0f172a; z-index: 999; }
+        .spinner { width: 40px; height: 40px; border: 3px solid rgba(59,130,246,0.1); border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
     <div id="loader">
         <div class="text-center">
-            <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-            <p class="mt-4 text-blue-500 font-bold uppercase text-xs tracking-widest">Orion Architect</p>
+            <div class="spinner mx-auto"></div>
+            <p class="mt-4 text-blue-500 font-bold uppercase text-[10px] tracking-[0.3em] animate-pulse">Initializing Orion Base</p>
         </div>
     </div>
     <div id="root"></div>
+    <!-- This links to your app.js file -->
     <script type="text/babel" src="app.js"></script>
     <script>
-        // Check every half second if React has loaded
+        // Remove loader when app is ready
         const timer = setInterval(() => {
-            if (document.getElementById('root').children.length > 0) {
-                document.getElementById('loader').style.opacity = '0';
-                setTimeout(() => document.getElementById('loader').remove(), 500);
+            const root = document.getElementById('root');
+            if (root && root.children.length > 0) {
+                document.getElementById('loader').style.display = 'none';
                 clearInterval(timer);
             }
-        }, 500);
+        }, 300);
     </script>
 </body>
 </html>
